@@ -1,0 +1,40 @@
+<!-- receta.component.html -->
+
+<div class="w-3/4 mx-auto p-4">
+  
+
+  <app-buscar></app-buscar>
+
+  <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <mat-card *ngFor="let receta of recetasMostradas | slice:desde:hasta" class="bg-blue-500 p-4">
+      <h2 class="text-2xl font-semibold mb-4">{{ receta.titulo }}</h2>
+
+      <div class="mb-4">
+        <p class="font-semibold">Ingredientes:</p>
+        <ul class="list-disc list-inside">
+          <li *ngFor="let ingrediente of receta.ingredientes">{{ ingrediente }}</li>
+        </ul>
+      </div>
+
+      <p class="mb-4 ">Tiempo: {{ receta.tiempo }} mins</p>
+      <p class="mb-4 ">Dificultad: {{ receta.nivelDificultad }}</p>
+
+      <img [src]="receta.imagen" class="w-full h-auto mb-4">
+
+      <div class="flex space-x-4">
+        <!-- Botón de Ver Video -->
+        <a [href]="receta.video" class="block bg-blue-700 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-blue-800">Ver Video</a>
+
+        <!-- Botón de Editar -->
+        <a [routerLink]="['/editar', receta.recetaId]" class="block bg-blue-700 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-blue-800">Editar</a>
+
+        <!-- Botón de Borrar -->
+        <button (click)="borrarReceta(receta.recetaId)" class="block bg-red-700 text-white py-2 px-4 rounded-full transition duration-300 hover:bg-red-800">Borrar</button>
+      </div>
+    </mat-card>
+  </div>
+  <mat-paginator [length]="recetasMostradas.length" 
+                 [pageSize]="pageSize" 
+                 (page)="changePage($event)">
+  </mat-paginator>
+</div>

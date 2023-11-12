@@ -1,0 +1,43 @@
+<div class="max-w-md mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Crear Nueva Receta</h2>
+    <form (submit)="crearReceta()" class="space-y-4">
+      <div class="space-y-2">
+        <label for="titulo" class="font-semibold">Título:</label>
+        <input type="text" id="titulo" [(ngModel)]="nuevaReceta.titulo" name="titulo" class="w-full p-2 border rounded" required>
+      </div>
+  
+      <div class="space-y-2">
+        <label for="ingredientes" class="font-semibold">Ingredientes (separados por comas):</label>
+        <input type="text" id="ingredientes" [(ngModel)]="nuevaReceta.ingredientes" name="ingredientes" class="w-full p-2 border rounded" required>
+      </div>
+  
+      <div class="space-y-2">
+        <label for="tiempo" class="font-semibold">Tiempo (en minutos):</label>
+        <input type="number" id="tiempo" [(ngModel)]="nuevaReceta.tiempo" name="tiempo" class="w-full p-2 border rounded" required>
+      </div>
+  
+      <div class="space-y-2">
+        <label for="nivelDificultad" class="font-semibold">Nivel de Dificultad:</label>
+        <select id="nivelDificultad" [(ngModel)]="nuevaReceta.nivelDificultad" name="nivelDificultad" class="w-full p-2 border rounded" required>
+          <option value="Fácil">Fácil</option>
+          <option value="Media">Media</option>
+          <option value="Difícil">Difícil</option>
+        </select>
+      </div>
+  
+      <div class="space-y-2">
+        <label for="imagen" class="font-semibold">URL de la Imagen:</label>
+        <input type="text" id="imagen" [(ngModel)]="nuevaReceta.imagen" name="imagen" class="w-full p-2 border rounded" required>
+      </div>
+  
+      <div class="space-y-2">
+        <label for="video" class="font-semibold">URL del Video:</label>
+        <input type="text" id="video" [(ngModel)]="nuevaReceta.video" name="video" class="w-full p-2 border rounded" required>
+      </div>
+  
+      <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded transition duration-300 hover:bg-blue-700">
+        Crear Receta
+      </button>
+    </form>
+  </div>
+  
